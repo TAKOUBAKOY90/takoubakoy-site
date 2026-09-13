@@ -1,3 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAKOUBAKOY | Site officiel</title>
+    <meta name="description" content="Site officiel de TAKOUBAKOY : musique indépendante, création vidéo, culture et projets numériques.">
+    <meta name="theme-color" content="#070707">
+    <meta property="og:title" content="TAKOUBAKOY | Site officiel">
+    <meta property="og:description" content="Musique indépendante, création vidéo, culture et projets numériques.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/takoubakoy-hero.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg: #070707;
+            --bg-soft: #0d0d0e;
+            --panel: #121214;
+            --panel-strong: #18181b;
+            --line: #2b2b30;
+            --text: #ffffff;
+            --muted: #b9b9bd;
+            --subtle: #7e7e86;
+            --red: #e50914;
+            --red-dark: #ab0710;
+            --amber: #e0a43c;
+            --cyan: #2ccbd0;
+            --max: 1180px;
+            --radius: 8px;
+            --shadow: 0 22px 70px rgba(0, 0, 0, 0.42);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-width: 320px;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            text-rendering: optimizeLegibility;
+        }
+
+        body.nav-open {
+            overflow: hidden;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        textarea {
+            font: inherit;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--cyan);
+            outline-offset: 4px;
+        }
+
+        .skip-link {
+            position: fixed;
+            top: 12px;
+            left: 12px;
+            z-index: 2000;
+            padding: 10px 14px;
+            background: var(--text);
+            color: #080808;
+            border-radius: var(--radius);
+            transform: translateY(-150%);
+            transition: transform 0.2s ease;
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(7, 7, 7, 0.86);
+            backdrop-filter: blur(16px);
+        }
+
+        .navbar {
+            width: min(var(--max), calc(100% - 40px));
+            min-height: 72px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 21px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .logo-mark {
+            width: 12px;
+            height: 32px;
+            border-radius: 999px;
+            background: linear-gradient(180deg, var(--red), var(--amber));
+            box-shadow: 0 0 24px rgba(229, 9, 20, 0.55);
+        }
+
+        .logo span {
+            color: var(--red);
+        }
+
+        .site-nav {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .site-nav a {
+            min-height: 42px;
+            display: inline-flex;
+            align-items: center;
+            padding: 0 13px;
+            border-radius: 999px;
+            color: var(--muted);
+            font-size: 14px;
+            font-weight: 700;
+            transition: color 0.2s ease, background 0.2s ease;
+        }
+
+        .site-nav a:hover {
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--text);
+        }
+
         .nav-toggle {
             display: none;
             width: 44px;
@@ -157,3 +317,925 @@
             border-color: var(--red-dark);
             background: var(--red-dark);
         }
+
+        .hero-strip {
+            width: min(var(--max), calc(100% - 40px));
+            margin: -38px auto 0;
+            position: relative;
+            z-index: 3;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: var(--radius);
+            background: rgba(14, 14, 16, 0.82);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(18px);
+        }
+
+        .hero-stat {
+            min-height: 92px;
+            padding: 22px;
+            border-right: 1px solid rgba(255, 255, 255, 0.09);
+        }
+
+        .hero-stat:last-child {
+            border-right: 0;
+        }
+
+        .hero-stat strong {
+            display: block;
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.2;
+        }
+
+        .hero-stat span {
+            display: block;
+            margin-top: 8px;
+            color: var(--subtle);
+            font-size: 13px;
+            line-height: 1.45;
+        }
+
+        section,
+        .section-band {
+            scroll-margin-top: 86px;
+        }
+
+        .section {
+            width: min(var(--max), calc(100% - 40px));
+            margin: 0 auto;
+            padding: 102px 0;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.2fr);
+            gap: 54px;
+            align-items: start;
+        }
+
+        .section-kicker {
+            margin-bottom: 12px;
+            color: var(--red);
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-size: clamp(32px, 5vw, 56px);
+            line-height: 1;
+            letter-spacing: 0;
+        }
+
+        .section-title span {
+            color: var(--red);
+        }
+
+        .section-intro {
+            max-width: 660px;
+            margin-top: 18px;
+            color: var(--muted);
+            font-size: 17px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .card {
+            min-height: 228px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 22px;
+            padding: 26px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background:
+                linear-gradient(145deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.015)),
+                var(--panel);
+            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(229, 9, 20, 0.72);
+            background:
+                linear-gradient(145deg, rgba(229, 9, 20, 0.11), rgba(255, 255, 255, 0.02)),
+                var(--panel);
+        }
+
+        .card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .card-index {
+            color: var(--subtle);
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .signal {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            background:
+                linear-gradient(135deg, rgba(229, 9, 20, 0.9), rgba(224, 164, 60, 0.88));
+            box-shadow: 0 0 26px rgba(229, 9, 20, 0.32);
+        }
+
+        .signal.cyan {
+            background: linear-gradient(135deg, rgba(44, 203, 208, 0.9), rgba(229, 9, 20, 0.72));
+            box-shadow: 0 0 26px rgba(44, 203, 208, 0.24);
+        }
+
+        .signal.amber {
+            background: linear-gradient(135deg, rgba(224, 164, 60, 0.95), rgba(255, 255, 255, 0.32));
+            box-shadow: 0 0 26px rgba(224, 164, 60, 0.23);
+        }
+
+        .card h3 {
+            font-size: 22px;
+            line-height: 1.18;
+        }
+
+        .card p {
+            color: var(--subtle);
+            font-size: 15px;
+        }
+
+        .feature-panel {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(290px, 0.55fr);
+            gap: 24px;
+            padding: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: var(--radius);
+            background:
+                linear-gradient(135deg, rgba(229, 9, 20, 0.16), rgba(44, 203, 208, 0.08) 48%, rgba(255, 255, 255, 0.03)),
+                var(--panel-strong);
+            box-shadow: var(--shadow);
+        }
+
+        .feature-panel h3 {
+            max-width: 720px;
+            font-size: clamp(30px, 4vw, 48px);
+            line-height: 1;
+        }
+
+        .feature-panel p {
+            max-width: 690px;
+            margin-top: 16px;
+            color: var(--muted);
+        }
+
+        .feature-list {
+            display: grid;
+            gap: 10px;
+            align-content: start;
+        }
+
+        .feature-list span {
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            padding: 12px 14px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius);
+            color: var(--muted);
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-list strong {
+            color: var(--text);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .media-shell {
+            display: grid;
+            grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.65fr);
+            gap: 20px;
+        }
+
+        .video-preview {
+            min-height: 370px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: var(--radius);
+            background:
+                linear-gradient(135deg, rgba(229, 9, 20, 0.22), rgba(44, 203, 208, 0.12)),
+                url("assets/takoubakoy-hero.png") center / cover;
+            box-shadow: var(--shadow);
+        }
+
+        .video-preview::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, rgba(7, 7, 7, 0.82), rgba(7, 7, 7, 0.18));
+        }
+
+        .play-button {
+            position: absolute;
+            inset: 50% auto auto 50%;
+            z-index: 2;
+            width: 74px;
+            height: 74px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 50%;
+            background: rgba(229, 9, 20, 0.92);
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 50px rgba(229, 9, 20, 0.55);
+        }
+
+        .play-button::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 53%;
+            width: 0;
+            height: 0;
+            border-top: 13px solid transparent;
+            border-bottom: 13px solid transparent;
+            border-left: 19px solid white;
+            transform: translate(-50%, -50%);
+        }
+
+        .video-caption {
+            position: absolute;
+            left: 24px;
+            right: 24px;
+            bottom: 24px;
+            z-index: 2;
+        }
+
+        .video-caption h3 {
+            font-size: clamp(28px, 4vw, 44px);
+            line-height: 1;
+        }
+
+        .video-caption p {
+            max-width: 540px;
+            margin-top: 12px;
+            color: #d6d6da;
+        }
+
+        .stack {
+            display: grid;
+            gap: 16px;
+        }
+
+        .side-card {
+            padding: 24px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: var(--panel);
+        }
+
+        .side-card h3 {
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+
+        .side-card p {
+            color: var(--subtle);
+            font-size: 15px;
+        }
+
+        .section-band {
+            background:
+                linear-gradient(90deg, rgba(229, 9, 20, 0.08), rgba(44, 203, 208, 0.04), transparent),
+                #0b0b0d;
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .about-copy {
+            display: grid;
+            gap: 18px;
+            color: var(--muted);
+            font-size: 17px;
+        }
+
+        .principles {
+            display: grid;
+            gap: 12px;
+        }
+
+        .principles li {
+            list-style: none;
+            padding: 18px 20px;
+            border-left: 3px solid var(--red);
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--muted);
+        }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 0.82fr) minmax(320px, 1fr);
+            gap: 28px;
+            align-items: stretch;
+        }
+
+        .contact-panel,
+        .contact-form {
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: var(--panel);
+            box-shadow: var(--shadow);
+        }
+
+        .contact-panel {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 34px;
+        }
+
+        .contact-panel p {
+            color: var(--muted);
+        }
+
+        .contact-links {
+            display: grid;
+            gap: 10px;
+        }
+
+        .contact-links a {
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 12px 14px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius);
+            color: var(--muted);
+            background: rgba(255, 255, 255, 0.03);
+            transition: border-color 0.2s ease, color 0.2s ease;
+        }
+
+        .contact-links a:hover {
+            border-color: rgba(229, 9, 20, 0.7);
+            color: var(--text);
+        }
+
+        .contact-form {
+            padding: 30px;
+            display: grid;
+            gap: 18px;
+        }
+
+        .field {
+            display: grid;
+            gap: 8px;
+        }
+
+        .field label {
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .field input,
+        .field textarea {
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: var(--radius);
+            background: rgba(0, 0, 0, 0.22);
+            color: var(--text);
+            padding: 13px 14px;
+        }
+
+        .field textarea {
+            min-height: 146px;
+            resize: vertical;
+        }
+
+        .form-status {
+            min-height: 22px;
+            color: var(--cyan);
+            font-size: 14px;
+        }
+
+        .site-footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            background: #060606;
+        }
+
+        .footer-inner {
+            width: min(var(--max), calc(100% - 40px));
+            min-height: 96px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            color: var(--subtle);
+            font-size: 13px;
+        }
+
+        .footer-inner strong {
+            color: var(--muted);
+        }
+
+        .back-top {
+            color: var(--muted);
+            font-weight: 800;
+        }
+
+        @media (max-width: 920px) {
+            .nav-toggle {
+                display: inline-block;
+            }
+
+            .site-nav {
+                position: fixed;
+                top: 72px;
+                left: 0;
+                right: 0;
+                height: calc(100vh - 72px);
+                display: grid;
+                align-content: start;
+                gap: 0;
+                padding: 18px 20px 34px;
+                border-top: 1px solid rgba(255, 255, 255, 0.08);
+                background: rgba(7, 7, 7, 0.98);
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+                transition: opacity 0.2s ease, visibility 0.2s ease;
+            }
+
+            .nav-open .site-nav {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+            }
+
+            .site-nav a {
+                min-height: 58px;
+                justify-content: flex-start;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 0;
+                font-size: 18px;
+            }
+
+            .hero-strip,
+            .section-grid,
+            .feature-panel,
+            .media-shell,
+            .contact-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .cards {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-stat {
+                border-right: 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+            }
+
+            .hero-stat:last-child {
+                border-bottom: 0;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .navbar,
+            .hero-inner,
+            .hero-strip,
+            .section,
+            .footer-inner {
+                width: min(100% - 32px, var(--max));
+            }
+
+            .navbar {
+                min-height: 64px;
+            }
+
+            .site-nav {
+                top: 64px;
+                height: calc(100vh - 64px);
+            }
+
+            .logo {
+                font-size: 18px;
+                letter-spacing: 1px;
+            }
+
+            .hero {
+                min-height: calc(100vh - 64px);
+            }
+
+            .hero::after {
+                background:
+                    linear-gradient(0deg, #070707 0%, rgba(7, 7, 7, 0.7) 42%, rgba(7, 7, 7, 0.26) 100%),
+                    linear-gradient(90deg, rgba(7, 7, 7, 0.92), rgba(7, 7, 7, 0.38));
+            }
+
+            .hero-inner {
+                padding: 72px 0 70px;
+            }
+
+            .hero h1 {
+                font-size: clamp(48px, 18vw, 78px);
+                line-height: 0.92;
+            }
+
+            .hero-copy {
+                font-size: 18px;
+            }
+
+            .actions,
+            .contact-form .actions {
+                display: grid;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .hero-strip,
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 74px 0;
+            }
+
+            .card {
+                min-height: 0;
+            }
+
+            .feature-panel,
+            .contact-panel,
+            .contact-form {
+                padding: 22px;
+            }
+
+            .video-preview {
+                min-height: 300px;
+            }
+
+            .footer-inner {
+                padding: 26px 0;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="site-header">
+        <div class="navbar">
+            <a href="#accueil" class="logo" aria-label="TAKOUBAKOY, accueil">
+                <span class="logo-mark" aria-hidden="true"></span>
+                TAKOUBA<span>KOY</span>
+            </a>
+
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Ouvrir le menu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </button>
+
+            <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
+                <a href="#musique">Musique</a>
+                <a href="#videos">Vidéos</a>
+                <a href="#projets">Projets</a>
+                <a href="#apropos">À propos</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="contenu">
+        <section class="hero" id="accueil" aria-labelledby="hero-title">
+            <div class="hero-media" aria-hidden="true">
+                <img src="assets/takoubakoy-hero.png" alt="">
+            </div>
+
+            <div class="hero-inner">
+                <p class="eyebrow">Site officiel</p>
+                <h1 id="hero-title">TAKOUBA<span>KOY</span></h1>
+                <p class="hero-copy">Musique indépendante, création vidéo et culture numérique portées par une identité forte.</p>
+                <p class="hero-note">Un univers en construction, pensé pour rassembler les sons, les images, les livres et les projets TAKOUBAKOY au même endroit.</p>
+
+                <div class="actions">
+                    <a class="btn btn-primary" href="#musique">Découvrir la musique</a>
+                    <a class="btn" href="#contact">Entrer en contact</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="hero-strip" aria-label="Points forts">
+            <div class="hero-stat">
+                <strong>Musique originale</strong>
+                <span>Une direction artistique indépendante et évolutive.</span>
+            </div>
+            <div class="hero-stat">
+                <strong>Images et vidéos</strong>
+                <span>Des formats courts, clips, productions et concepts visuels.</span>
+            </div>
+            <div class="hero-stat">
+                <strong>Culture et projets</strong>
+                <span>Un espace pour les idées, les créations et les collaborations.</span>
+            </div>
+        </div>
+
+        <section class="section" id="musique">
+            <div class="section-grid">
+                <div>
+                    <p class="section-kicker">Musique</p>
+                    <h2 class="section-title">La signature <span>TAKOUBAKOY</span></h2>
+                    <p class="section-intro">Une base musicale pensée comme un territoire : directe, indépendante, culturelle et ouverte aux collaborations.</p>
+                </div>
+
+                <div class="cards">
+                    <article class="card">
+                        <div class="card-top">
+                            <span class="card-index">01</span>
+                            <span class="signal" aria-hidden="true"></span>
+                        </div>
+                        <div>
+                            <h3>Créations originales</h3>
+                            <p>Des morceaux développés autour de l'identité TAKOUBAKOY, avec une place forte pour la voix, le rythme et l'atmosphère.</p>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-top">
+                            <span class="card-index">02</span>
+                            <span class="signal cyan" aria-hidden="true"></span>
+                        </div>
+                        <div>
+                            <h3>Culture vivante</h3>
+                            <p>Des influences qui traversent les frontières et donnent au projet une énergie populaire, urbaine et collective.</p>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-top">
+                            <span class="card-index">03</span>
+                            <span class="signal amber" aria-hidden="true"></span>
+                        </div>
+                        <div>
+                            <h3>TAKOUBAKOY Revolution</h3>
+                            <p>Un axe artistique en développement, conçu pour porter les prochains sons, visuels et prises de parole.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="sortie-title">
+            <div class="feature-panel">
+                <div>
+                    <p class="section-kicker">En préparation</p>
+                    <h2 class="section-title" id="sortie-title">Prochaine mise en avant</h2>
+                    <h3>TAKOUBAKOY Revolution</h3>
+                    <p>Un espace prêt pour annoncer une sortie, ajouter une pochette, intégrer un lecteur audio ou diriger vers les plateformes officielles dès que les liens sont disponibles.</p>
+                    <div class="actions">
+                        <a class="btn btn-primary" href="#contact">Proposer une collaboration</a>
+                        <a class="btn" href="#videos">Voir l'univers vidéo</a>
+                    </div>
+                </div>
+
+                <div class="feature-list" aria-label="Informations du projet">
+                    <span><strong>Format</strong> Single / clip / annonce</span>
+                    <span><strong>Statut</strong> En développement</span>
+                    <span><strong>Univers</strong> Musique, image, culture</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="videos">
+            <div class="section-grid">
+                <div>
+                    <p class="section-kicker">Vidéos</p>
+                    <h2 class="section-title">ZARMA <span>PLAYA</span></h2>
+                    <p class="section-intro">Une place dédiée aux clips, formats courts, coulisses et productions audiovisuelles liées à TAKOUBAKOY.</p>
+                </div>
+
+                <div class="media-shell">
+                    <article class="video-preview" aria-label="Aperçu vidéo ZARMA PLAYA">
+                        <span class="play-button" aria-hidden="true"></span>
+                        <div class="video-caption">
+                            <h3>ZARMA PLAYA</h3>
+                            <p>La section est prête pour intégrer une vidéo YouTube, une bande-annonce ou une playlist officielle.</p>
+                        </div>
+                    </article>
+
+                    <div class="stack">
+                        <article class="side-card">
+                            <h3>Clips</h3>
+                            <p>Une zone claire pour présenter les clips principaux avec une miniature forte.</p>
+                        </article>
+                        <article class="side-card">
+                            <h3>Formats courts</h3>
+                            <p>Un point d'entrée pour TikTok, Reels, Shorts ou contenus de coulisses.</p>
+                        </article>
+                        <article class="side-card">
+                            <h3>Production</h3>
+                            <p>Un espace pour valoriser les tournages, montages, concepts et collaborations vidéo.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="projets">
+            <div class="section-grid">
+                <div>
+                    <p class="section-kicker">Projets</p>
+                    <h2 class="section-title">Une identité, plusieurs <span>directions</span></h2>
+                    <p class="section-intro">Le site peut évoluer avec de nouvelles rubriques sans perdre son centre : TAKOUBAKOY comme signature créative.</p>
+                </div>
+
+                <div class="cards">
+                    <article class="card">
+                        <div class="card-top">
+                            <span class="card-index">01</span>
+                            <span class="signal" aria-hidden="true"></span>
+                        </div>
+                        <div>
+                            <h3>Production vidéo</h3>
+                            <p>Création et diffusion de contenus audiovisuels autour de la musique et des idées.</p>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-top">
+                            <span class="card-index">02</span>
+                            <span class="signal cyan" aria-hidden="true"></span>
+                        </div>
+                        <div>
+                            <h3>Livres et créations</h3>
+                            <p>Projets éditoriaux, livres numériques, textes et formats créatifs complémentaires.</p>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-top">
+                            <span class="card-index">03</span>
+                            <span class="signal amber" aria-hidden="true"></span>
+                        </div>
+                        <div>
+                            <h3>Collaborations</h3>
+                            <p>Un point de contact pour artistes, vidéastes, créateurs et partenaires culturels.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-band" id="apropos">
+            <section class="section">
+                <div class="section-grid">
+                    <div>
+                        <p class="section-kicker">À propos</p>
+                        <h2 class="section-title">Un univers <span>indépendant</span></h2>
+                    </div>
+
+                    <div class="about-copy">
+                        <p>TAKOUBAKOY est un univers créatif consacré à la musique, à la vidéo, à la culture et aux projets numériques. Le site rassemble la présence officielle du projet et prépare l'arrivée de nouveaux contenus.</p>
+                        <p>La direction est simple : construire une identité reconnaissable, publier avec régularité et créer des ponts entre le son, l'image et les récits.</p>
+
+                        <ul class="principles">
+                            <li>Une esthétique directe, sombre et énergique.</li>
+                            <li>Une place centrale donnée aux créations originales.</li>
+                            <li>Une structure prête à accueillir les sorties, vidéos et collaborations.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section class="section" id="contact">
+            <div class="section-grid">
+                <div>
+                    <p class="section-kicker">Contact</p>
+                    <h2 class="section-title">Construire la suite</h2>
+                    <p class="section-intro">Pour une collaboration, une production, une sortie ou une demande professionnelle, envoyez un message à l'équipe TAKOUBAKOY.</p>
+                </div>
+
+                <div class="contact-layout">
+                    <aside class="contact-panel">
+                        <div>
+                            <h3>TAKOUBAKOY officiel</h3>
+                            <p>Les liens sociaux et plateformes peuvent être ajoutés dès qu'ils sont confirmés.</p>
+                        </div>
+
+                        <div class="contact-links" aria-label="Accès rapides">
+                            <a href="#musique">Musique <span aria-hidden="true">+</span></a>
+                            <a href="#videos">Vidéos <span aria-hidden="true">+</span></a>
+                            <a href="#projets">Projets <span aria-hidden="true">+</span></a>
+                        </div>
+                    </aside>
+
+                    <form class="contact-form" id="contact-form" action="mailto:contact@takoubakoy.com" method="post" enctype="text/plain">
+                        <div class="field">
+                            <label for="name">Nom</label>
+                            <input id="name" name="Nom" type="text" autocomplete="name" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="email">Email</label>
+                            <input id="email" name="Email" type="email" autocomplete="email" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="Message" required></textarea>
+                        </div>
+
+                        <div class="actions">
+                            <button class="btn btn-primary" type="submit">Envoyer le message</button>
+                        </div>
+
+                        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p>© 2026 <strong>TAKOUBAKOY</strong>. Tous droits réservés.</p>
+            <a class="back-top" href="#accueil">Retour en haut</a>
+        </div>
+    </footer>
+
+    <script>
+        const body = document.body;
+        const navToggle = document.querySelector(".nav-toggle");
+        const siteNav = document.querySelector("#site-nav");
+        const form = document.querySelector("#contact-form");
+        const formStatus = document.querySelector("#form-status");
+
+        function setNav(open) {
+            body.classList.toggle("nav-open", open);
+            navToggle.setAttribute("aria-expanded", String(open));
+            navToggle.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu");
+        }
+
+        navToggle.addEventListener("click", () => {
+            setNav(!body.classList.contains("nav-open"));
+        });
+
+        siteNav.addEventListener("click", (event) => {
+            if (event.target.matches("a")) {
+                setNav(false);
+            }
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                setNav(false);
+            }
+        });
+
+        form.addEventListener("submit", () => {
+            formStatus.textContent = "Votre application email va s'ouvrir pour finaliser l'envoi.";
+        });
+    </script>
+</body>
+</html>

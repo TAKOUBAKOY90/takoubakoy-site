@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAKOUBAKOY — Site officiel</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #080808;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(8,8,8,0.95);
+    border-bottom: 1px solid #222;
+    backdrop-filter: blur(10px);
+}
+
+.navbar {
+    max-width: 1150px;
+    margin: auto;
+    padding: 18px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: 3px;
+}
+
+.logo span {
+    color: #e50914;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    color: #ccc;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #e50914;
+}
+
+.hero {
+    min-height: 88vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px;
+    background:
+        radial-gradient(circle at center, #181818 0%, #080808 65%);
+}
+
+.hero-content {
+    max-width: 900px;
+}
+
+.hero h1 {
+    font-size: clamp(55px, 10vw, 115px);
+    line-height: 0.95;
+    letter-spacing: 8px;
+    font-weight: 900;
+}
+
+.hero h1 span {
+    color: #e50914;
+}
+
+.hero p {
+    margin-top: 28px;
+    font-size: 20px;
+    color: #bbb;
+    letter-spacing: 2px;
+}
+
+.buttons {
+    margin-top: 38px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 14px 28px;
+    border-radius: 5px;
+    font-weight: bold;
+    border: 1px solid #333;
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background: #e50914;
+    border-color: #e50914;
+}
+
+.btn-primary:hover {
+    background: #b80710;
+}
+
+.btn-secondary {
+    background: #151515;
+}
+
+.btn-secondary:hover {
+    border-color: #e50914;
+}
+
+section {
+    max-width: 1150px;
+    margin: auto;
+    padding: 90px 25px;
+}
+
+.section-title {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.section-title span {
+    color: #e50914;
+}
+
+.section-intro {
+    color: #999;
+    margin-bottom: 40px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.card {
+    background: #111;
+    border: 1px solid #242424;
+    border-radius: 12px;
+    padding: 30px;
+    min-height: 190px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #e50914;
+}
+
+.card h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: #999;
+}
+
+.card-icon {
+    font-size: 32px;
+    margin-bottom: 18px;
+}
+
+.about {
+    background: #0d0d0d;
+    max-width: none;
+}
+
+.about-inner {
+    max-width: 1150px;
+    margin: auto;
+    padding: 90px 25px;
+}
+
+.about p {
+    max-width: 800px;
+    color: #aaa;
+    font-size: 18px;
+}
+
+.contact-box {
+    background: linear-gradient(135deg, #151515, #0d0d0d);
+    border: 1px solid #252525;
+    padding: 45px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.contact-box h2 {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+footer {
+    border-top: 1px solid #222;
+    text-align: center;
+    padding: 35px 20px;
+    color: #666;
+    font-size: 14px;
+}
+
+footer strong {
+    color: #aaa;
+}
+
+@media (max-width: 800px) {
+    nav {
+        display: none;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        letter-spacing: 4px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    section,
+    .about-inner {
+        padding: 65px 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="navbar">
+        <div class="logo">TAKOUBA<span>KOY</span></div>
+
+        <nav>
+            <a href="#musique">Musique</a>
+            <a href="#videos">Vidéos</a>
+            <a href="#projets">Projets</a>
+            <a href="#apropos">À propos</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>TAKOUBA<span>KOY</span></h1>
+
+        <p>
+            MUSIQUE · CRÉATION · CULTURE · PROJETS
+        </p>
+
+        <div class="buttons">
+            <a class="btn btn-primary" href="#musique">Découvrir</a>
+            <a class="btn btn-secondary" href="#projets">Nos projets</a>
+        </div>
+    </div>
+</section>
+
+<section id="musique">
+    <h2 class="section-title">La <span>Musique</span></h2>
+
+    <p class="section-intro">
+        Un univers musical entre création, culture et identité.
+    </p>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="card-icon">🎵</div>
+            <h3>Créations originales</h3>
+            <p>
+                Des morceaux originaux développés autour de l'identité
+                et de l'univers TAKOUBAKOY.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🌍</div>
+            <h3>Culture</h3>
+            <p>
+                Des influences et des sonorités qui traversent les
+                frontières et rapprochent les cultures.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🔥</div>
+            <h3>TAKOUBAKOY Revolution</h3>
+            <p>
+                Un projet artistique en développement, porté par une
+                identité forte et indépendante.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section id="videos">
+    <h2 class="section-title">Nos <span>Vidéos</span></h2>
+
+    <p class="section-intro">
+        Retrouvez prochainement les productions et vidéos TAKOUBAKOY.
+    </p>
+
+    <div class="card">
+        <div class="card-icon">▶️</div>
+        <h3>ZARMA PLAYA</h3>
+        <p>
+            La chaîne vidéo de TAKOUBAKOY sera intégrée ici.
+        </p>
+
+        <div class="buttons" style="justify-content:flex-start;">
+            <a class="btn btn-primary" href="#contact">
+                Voir la chaîne
+            </a>
+        </div>
+    </div>
+</section>
+
+<section id="projets">
+    <h2 class="section-title">Nos <span>Projets</span></h2>
+
+    <p class="section-intro">
+        TAKOUBAKOY rassemble plusieurs projets créatifs et culturels.
+    </p>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="card-icon">🎬</div>
+            <h3>Production vidéo</h3>
+            <p>
+                Création et diffusion de contenus audiovisuels.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">📚</div>
+            <h3>Livres & créations</h3>
+            <p>
+                Projets éditoriaux, livres numériques et créations
+                originales.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🚀</div>
+            <h3>TAKOUBAKOY</h3>
+            <p>
+                Une identité indépendante destinée à évoluer avec
+                de nouveaux projets.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<div class="about" id="apropos">
+    <div class="about-inner">
+
+        <h2 class="section-title">À <span>propos</span></h2>
+
+        <p>
+            TAKOUBAKOY est un univers créatif indépendant consacré à
+            la musique, à la vidéo, à la culture et aux projets
+            numériques.
+        </p>
+
+        <br>
+
+        <p>
+            Ce site constitue la présence officielle de TAKOUBAKOY
+            sur Internet. Il évoluera progressivement avec les
+            nouvelles créations et les nouveaux projets.
+        </p>
+
+    </div>
+</div>
+
+<section id="contact">
+
+    <div class="contact-box">
+
+        <h2>Bienvenue chez TAKOUBAKOY</h2>
+
+        <p style="color:#999;">
+            Le site officiel est en construction.
+            De nouveaux contenus arrivent prochainement.
+        </p>
+
+        <div class="buttons">
+            <a class="btn btn-primary" href="#musique">
+                Explorer TAKOUBAKOY
+            </a>
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+<footer>
+    © 2026 <strong>TAKOUBAKOY</strong> — Tous droits réservés.
+</footer>
+
+</body>
+</html>

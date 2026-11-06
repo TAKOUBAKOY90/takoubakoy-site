@@ -1,819 +1,298 @@
-<!DOCTYPE html>
-
+<!doctype html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>TAKOUBAKOY — Site officiel</title>
-<meta name="description" content="TAKOUBAKOY — Musique, création, culture et projets.">
-
-<style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #070707;
-    color: #fff;
-    line-height: 1.6;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-/* =========================
-   HEADER
-========================= */
-
-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: rgba(7, 7, 7, 0.94);
-    border-bottom: 1px solid #202020;
-    backdrop-filter: blur(12px);
-}
-
-.navbar {
-    max-width: 1180px;
-    margin: auto;
-    padding: 16px 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: 900;
-    letter-spacing: 3px;
-}
-
-.logo span {
-    color: #e50914;
-}
-
-nav {
-    display: flex;
-    gap: 24px;
-}
-
-nav a {
-    color: #c7c7c7;
-    font-size: 14px;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-nav a:hover {
-    color: #e50914;
-}
-
-/* =========================
-   HERO / ACCUEIL
-========================= */
-
-.hero {
-    min-height: calc(100vh - 70px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 70px 20px;
-    position: relative;
-    overflow: hidden;
-
-    background:
-        radial-gradient(circle at 50% 42%, rgba(229, 9, 20, 0.13), transparent 28%),
-        radial-gradient(circle at 50% 50%, #191919 0%, #0b0b0b 48%, #070707 75%);
-}
-
-.hero::before {
-    content: "";
-    position: absolute;
-    width: 420px;
-    height: 420px;
-    border: 1px solid rgba(229, 9, 20, 0.12);
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.hero-content {
-    max-width: 950px;
-    position: relative;
-    z-index: 2;
-}
-
-.hero-label {
-    display: inline-block;
-    margin-bottom: 22px;
-    padding: 7px 15px;
-    border: 1px solid #333;
-    border-radius: 30px;
-    color: #aaa;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 2px;
-}
-
-.hero h1 {
-    font-size: clamp(48px, 11vw, 125px);
-    line-height: 0.9;
-    letter-spacing: clamp(3px, 1vw, 9px);
-    font-weight: 900;
-}
-
-.hero h1 span {
-    color: #e50914;
-}
-
-.hero-subtitle {
-    margin: 28px auto 0;
-    max-width: 720px;
-    color: #bdbdbd;
-    font-size: clamp(15px, 2vw, 20px);
-    letter-spacing: 2px;
-}
-
-.hero-description {
-    margin: 15px auto 0;
-    max-width: 650px;
-    color: #777;
-    font-size: 15px;
-}
-
-.buttons {
-    margin-top: 36px;
-    display: flex;
-    justify-content: center;
-    gap: 14px;
-    flex-wrap: wrap;
-}
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 48px;
-    padding: 13px 25px;
-    border-radius: 6px;
-    font-weight: 700;
-    font-size: 14px;
-    border: 1px solid #333;
-    transition: 0.3s;
-}
-
-.btn-primary {
-    background: #e50914;
-    border-color: #e50914;
-}
-
-.btn-primary:hover {
-    background: #b80710;
-    border-color: #b80710;
-    transform: translateY(-2px);
-}
-
-.btn-secondary {
-    background: #151515;
-}
-
-.btn-secondary:hover {
-    border-color: #e50914;
-    transform: translateY(-2px);
-}
-
-/* =========================
-   SECTIONS
-========================= */
-
-section {
-    max-width: 1180px;
-    margin: auto;
-    padding: 90px 24px;
-}
-
-.section-title {
-    font-size: clamp(30px, 5vw, 42px);
-    margin-bottom: 12px;
-    line-height: 1.1;
-}
-
-.section-title span {
-    color: #e50914;
-}
-
-.section-intro {
-    color: #888;
-    margin-bottom: 40px;
-    max-width: 700px;
-}
-
-/* =========================
-   CARDS
-========================= */
-
-.cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.card {
-    background: linear-gradient(145deg, #131313, #0d0d0d);
-    border: 1px solid #252525;
-    border-radius: 14px;
-    padding: 30px;
-    min-height: 195px;
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    border-color: #e50914;
-}
-
-.card-icon {
-    font-size: 30px;
-    margin-bottom: 18px;
-}
-
-.card h3 {
-    font-size: 21px;
-    margin-bottom: 10px;
-}
-
-.card p {
-    color: #888;
-}
-
-/* =========================
-   FEATURED MUSIC
-========================= */
-
-.featured {
-    margin-top: 45px;
-    padding: 35px;
-    border-radius: 15px;
-    border: 1px solid #252525;
-    background:
-        linear-gradient(135deg, rgba(229, 9, 20, 0.08), transparent 55%),
-        #101010;
-}
-
-.featured h3 {
-    font-size: 25px;
-    margin-bottom: 8px;
-}
-
-.featured p {
-    color: #888;
-}
-
-/* =========================
-   VIDEOS
-========================= */
-
-.video-card {
-    background: linear-gradient(135deg, #151515, #0c0c0c);
-    border: 1px solid #252525;
-    border-radius: 15px;
-    padding: 35px;
-}
-
-.video-card h3 {
-    font-size: 25px;
-    margin-bottom: 10px;
-}
-
-.video-card p {
-    color: #888;
-}
-
-/* =========================
-   ABOUT
-========================= */
-
-.about {
-    background: #0d0d0d;
-    max-width: none;
-}
-
-.about-inner {
-    max-width: 1180px;
-    margin: auto;
-    padding: 90px 24px;
-}
-
-.about p {
-    max-width: 800px;
-    color: #aaa;
-    font-size: 17px;
-}
-
-/* =========================
-   CONTACT
-========================= */
-
-.contact-box {
-    background:
-        radial-gradient(circle at top right, rgba(229, 9, 20, 0.10), transparent 35%),
-        linear-gradient(135deg, #161616, #0c0c0c);
-    border: 1px solid #292929;
-    padding: 55px 35px;
-    border-radius: 18px;
-    text-align: center;
-}
-
-.contact-box h2 {
-    font-size: clamp(27px, 5vw, 38px);
-    margin-bottom: 12px;
-}
-
-.contact-box p {
-    color: #888;
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-footer {
-    border-top: 1px solid #202020;
-    text-align: center;
-    padding: 35px 20px;
-    color: #606060;
-    font-size: 13px;
-}
-
-footer strong {
-    color: #aaa;
-}
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 800px) {
-
-    header {
-        position: sticky;
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080b12">
+  <meta name="description" content="TAKOUBAKOY LAB — un laboratoire indépendant consacré à l'exploration, à la maîtrise et à la création d'outils numériques.">
+  <meta property="og:title" content="TAKOUBAKOY LAB — Digital Independence">
+  <meta property="og:description" content="Explorer. Comprendre. Construire. Garder le contrôle.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://lab.takoubakoy.com/">
+  <title>TAKOUBAKOY LAB — Digital Independence</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #080b12;
+      --panel: #0d1320;
+      --panel-2: #101a2a;
+      --text: #f3f6fb;
+      --muted: #9aa8bb;
+      --line: rgba(142, 164, 194, .16);
+      --red: #f04452;
+      --blue: #48a7ff;
+      --max: 1160px;
     }
-
-    .navbar {
-        padding: 14px 18px;
-        justify-content: center;
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 75% 8%, rgba(29, 91, 157, .16), transparent 36rem),
+        radial-gradient(ellipse at 12% 42%, rgba(160, 30, 54, .09), transparent 32rem),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+      overflow-x: hidden;
     }
-
-    .logo {
-        font-size: 21px;
+    a { color: inherit; text-decoration: none; }
+    .shell { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(8, 11, 18, .82);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(18px);
     }
-
-    nav {
-        display: none;
+    .nav {
+      min-height: 78px; display: flex; align-items: center;
+      justify-content: space-between; gap: 28px;
     }
-
-    .hero {
-        min-height: calc(100vh - 58px);
-        padding: 55px 18px;
+    .brand { display: inline-flex; align-items: center; gap: 13px; }
+    .brand-mark {
+      width: 42px; height: 42px; display: grid; place-items: center;
+      border: 1px solid rgba(72, 167, 255, .48);
+      background: linear-gradient(145deg, rgba(72,167,255,.14), rgba(240,68,82,.12));
+      color: white; font-size: 15px; font-weight: 900; letter-spacing: -1px;
+      clip-path: polygon(0 0, 100% 0, 100% 76%, 76% 100%, 0 100%);
     }
-
-    .hero::before {
-        width: 270px;
-        height: 270px;
+    .brand-name { display: block; font-size: 13px; font-weight: 850; letter-spacing: .19em; line-height: 1.25; }
+    .brand-tag { display: block; margin-top: 4px; color: var(--muted); font-size: 9px; letter-spacing: .22em; }
+    .nav-links { display: flex; align-items: center; gap: 30px; }
+    .nav-links a { color: #bdc8d7; font-size: 13px; transition: color .2s ease; }
+    .nav-links a:hover { color: white; }
+    .nav-cta {
+      padding: 9px 15px; border: 1px solid rgba(72,167,255,.45);
+      color: #d9edff !important; border-radius: 4px;
     }
-
-    .hero-label {
-        font-size: 10px;
-        letter-spacing: 1.5px;
-        padding: 6px 12px;
+    .hero { position: relative; min-height: 660px; display: grid; align-items: center; padding: 92px 0 100px; }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.05fr .95fr;
+      align-items: center; gap: 48px;
     }
-
-    .hero h1 {
-        font-size: clamp(43px, 14vw, 78px);
-        letter-spacing: 3px;
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      color: #a8cfff; font-size: 11px; font-weight: 700;
+      letter-spacing: .2em; text-transform: uppercase;
     }
-
-    .hero-subtitle {
-        margin-top: 22px;
-        font-size: 14px;
-        line-height: 1.6;
-        letter-spacing: 1.3px;
+    .eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--red); }
+    h1 { margin: 24px 0 20px; font-size: clamp(42px, 6vw, 76px); line-height: 1.04; letter-spacing: -.055em; }
+    h1 span {
+      display: block;
+      background: linear-gradient(100deg, #fff 5%, #9ccfff 55%, #f17a85 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
     }
-
-    .hero-description {
-        font-size: 14px;
-        line-height: 1.6;
+    .hero-copy { max-width: 560px; color: var(--muted); font-size: 17px; }
+    .hero-copy strong { color: #eaf2fc; font-weight: 650; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 34px; }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 46px; padding: 0 19px; border-radius: 4px;
+      font-size: 13px; font-weight: 750; transition: transform .2s, border-color .2s, background .2s;
     }
-
-    .buttons {
-        margin-top: 28px;
-        gap: 10px;
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { color: #07101a; background: linear-gradient(100deg, #69b8ff, #a4d7ff); }
+    .button-secondary { border: 1px solid var(--line); color: #dce6f2; }
+    .hero-visual {
+      position: relative; min-height: 430px; display: grid; place-items: center;
+      border: 1px solid rgba(116, 155, 201, .18);
+      background: linear-gradient(145deg, rgba(16,26,42,.82), rgba(8,13,23,.36));
+      overflow: hidden; isolation: isolate;
     }
-
-    .btn {
-        width: 100%;
-        max-width: 300px;
-        min-height: 48px;
+    .hero-visual::before, .hero-visual::after {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background-image: linear-gradient(rgba(112,153,202,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(112,153,202,.055) 1px, transparent 1px);
+      background-size: 34px 34px; mask-image: linear-gradient(135deg, black, transparent 82%);
     }
-
-    section,
-    .about-inner {
-        padding: 65px 18px;
+    .hero-visual::after {
+      inset: auto -20% -35% 20%; height: 70%;
+      background: radial-gradient(ellipse, rgba(33,127,218,.2), transparent 65%);
+      filter: blur(20px); mask-image: none;
     }
-
-    .section-title {
-        font-size: 31px;
+    .circuit { position: relative; z-index: 1; width: 100%; max-width: 540px; padding: 18px; }
+    .visual-label {
+      position: absolute; z-index: 2; left: 22px; bottom: 18px;
+      color: #8195ae; font-size: 9px; letter-spacing: .2em;
     }
-
-    .section-intro {
-        margin-bottom: 28px;
+    .status {
+      display: inline-flex; align-items: center; gap: 9px;
+      margin-top: 30px; color: #91a2b7; font-size: 11px; letter-spacing: .08em;
     }
-
-    .cards {
-        grid-template-columns: 1fr;
-        gap: 15px;
+    .status-dot { width: 7px; height: 7px; border-radius: 50%; background: #e5a64c; box-shadow: 0 0 12px rgba(229,166,76,.5); }
+    section { scroll-margin-top: 100px; }
+    .section { padding: 94px 0; border-top: 1px solid var(--line); }
+    .section-heading { max-width: 690px; margin-bottom: 42px; }
+    .section-heading h2 { margin: 14px 0 12px; font-size: clamp(29px, 4vw, 43px); line-height: 1.15; letter-spacing: -.035em; }
+    .section-heading p { margin: 0; color: var(--muted); }
+    .principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .principle {
+      min-height: 230px; padding: 27px; border: 1px solid var(--line);
+      background: linear-gradient(150deg, rgba(16,26,42,.78), rgba(10,15,24,.56));
     }
-
-    .card {
-        padding: 25px;
-        min-height: auto;
+    .number { color: var(--red); font-size: 11px; font-weight: 800; letter-spacing: .16em; }
+    .principle h3 { margin: 24px 0 9px; font-size: 19px; }
+    .principle p { margin: 0; color: var(--muted); font-size: 14px; }
+    .manifesto {
+      display: grid; grid-template-columns: .75fr 1.25fr; gap: 50px; align-items: start;
+      padding: 38px; border: 1px solid rgba(72,167,255,.2);
+      background: linear-gradient(110deg, rgba(20,49,78,.34), rgba(15,20,31,.62));
     }
-
-    .featured {
-        padding: 25px;
+    .manifesto-mark { color: var(--blue); font-size: 11px; font-weight: 800; letter-spacing: .2em; }
+    .manifesto h2 { margin: 13px 0 0; font-size: 29px; line-height: 1.2; }
+    .manifesto p { margin: 0 0 14px; color: #b5c1d0; }
+    .manifesto p:last-child { margin-bottom: 0; }
+    .footer { padding: 28px 0 38px; border-top: 1px solid var(--line); color: #7f8da1; font-size: 11px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .footer strong { color: #c8d4e3; letter-spacing: .12em; }
+    @media (max-width: 800px) {
+      .nav { min-height: 70px; }
+      .nav-links { gap: 15px; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .hero { min-height: auto; padding: 72px 0 78px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 42px; }
+      .hero-visual { min-height: 340px; }
+      .principles { grid-template-columns: 1fr; }
+      .principle { min-height: auto; }
+      .manifesto { grid-template-columns: 1fr; gap: 22px; padding: 27px; }
+      .section { padding: 70px 0; }
     }
-
-    .video-card {
-        padding: 25px;
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
     }
-
-    .contact-box {
-        padding: 40px 20px;
-    }
-}
-
-@media (max-width: 380px) {
-
-    .hero h1 {
-        font-size: 40px;
-        letter-spacing: 2px;
-    }
-
-    .hero-subtitle {
-        font-size: 13px;
-    }
-
-    .section-title {
-        font-size: 28px;
-    }
-}
-</style>
-
+  </style>
 </head>
-
 <body>
-
-<header>
-    <div class="navbar">
-
-```
-    <a href="#accueil" class="logo">
-        TAKOUBA<span>KOY</span>
-    </a>
-
-    <nav>
-        <a href="#musique">Musique</a>
-        <a href="#videos">Vidéos</a>
-        <a href="#projets">Projets</a>
-        <a href="#apropos">À propos</a>
-        <a href="#contact">Contact</a>
-    </nav>
-
-</div>
-```
-
-</header>
-
-<main>
-
-<!-- =========================
-     ACCUEIL
-========================= -->
-
-<section class="hero" id="accueil">
-
-```
-<div class="hero-content">
-
-    <div class="hero-label">
-        SITE OFFICIEL
+  <header class="topbar">
+    <div class="shell nav">
+      <a class="brand" href="#accueil" aria-label="TAKOUBAKOY LAB, accueil">
+        <span class="brand-mark" aria-hidden="true">TL</span>
+        <span><span class="brand-name">TAKOUBAKOY LAB</span><span class="brand-tag">DIGITAL INDEPENDENCE</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="#vision">Notre vision</a>
+        <a href="#axes">Nos axes</a>
+        <a class="nav-cta" href="#manifeste">Le manifeste</a>
+      </nav>
     </div>
+  </header>
 
-    <h1>
-        TAKOUBA<span>KOY</span>
-    </h1>
-
-    <p class="hero-subtitle">
-        MUSIQUE · CRÉATION · CULTURE · PROJETS
-    </p>
-
-    <p class="hero-description">
-        Un univers indépendant où la musique, la création
-        et la culture se rencontrent.
-    </p>
-
-    <div class="buttons">
-
-        <a class="btn btn-primary" href="#musique">
-            Découvrir la musique
-        </a>
-
-        <a class="btn btn-secondary" href="#projets">
-            Découvrir nos projets
-        </a>
-
-    </div>
-
-</div>
-```
-
-</section>
-
-<!-- =========================
-     MUSIQUE
-========================= -->
-
-<section id="musique">
-
-```
-<h2 class="section-title">
-    La <span>Musique</span>
-</h2>
-
-<p class="section-intro">
-    Un univers musical entre création, culture et identité.
-</p>
-
-<div class="cards">
-
-    <div class="card">
-        <div class="card-icon">🎵</div>
-
-        <h3>
-            Créations originales
-        </h3>
-
-        <p>
-            Des morceaux originaux développés autour de
-            l'identité et de l'univers TAKOUBAKOY.
-        </p>
-    </div>
-
-    <div class="card">
-        <div class="card-icon">🌍</div>
-
-        <h3>
-            Culture
-        </h3>
-
-        <p>
-            Des influences et des sonorités qui traversent
-            les frontières et rapprochent les cultures.
-        </p>
-    </div>
-
-    <div class="card">
-        <div class="card-icon">🔥</div>
-
-        <h3>
-            TAKOUBAKOY Revolution
-        </h3>
-
-        <p>
-            Un projet artistique en développement, porté
-            par une identité forte et indépendante.
-        </p>
-    </div>
-
-</div>
-
-<div class="featured">
-
-    <h3>
-        Prochainement
-    </h3>
-
-    <p>
-        Retrouvez ici les nouvelles créations musicales
-        de TAKOUBAKOY.
-    </p>
-
-</div>
-```
-
-</section>
-
-<!-- =========================
-     VIDEOS
-========================= -->
-
-<section id="videos">
-
-```
-<h2 class="section-title">
-    Nos <span>Vidéos</span>
-</h2>
-
-<p class="section-intro">
-    Retrouvez prochainement les productions et vidéos
-    TAKOUBAKOY.
-</p>
-
-<div class="video-card">
-
-    <div class="card-icon">
-        ▶️
-    </div>
-
-    <h3>
-        ZARMA PLAYA
-    </h3>
-
-    <p>
-        La chaîne vidéo de TAKOUBAKOY sera intégrée ici.
-    </p>
-
-    <div class="buttons" style="justify-content:flex-start;">
-
-        <a class="btn btn-primary" href="#contact">
-            Voir la chaîne
-        </a>
-
-    </div>
-
-</div>
-```
-
-</section>
-
-<!-- =========================
-     PROJETS
-========================= -->
-
-<section id="projets">
-
-```
-<h2 class="section-title">
-    Nos <span>Projets</span>
-</h2>
-
-<p class="section-intro">
-    TAKOUBAKOY rassemble plusieurs projets créatifs
-    et culturels.
-</p>
-
-<div class="cards">
-
-    <div class="card">
-
-        <div class="card-icon">
-            🎬
+  <main>
+    <section class="hero" id="accueil">
+      <div class="shell hero-grid">
+        <div>
+          <div class="eyebrow">Laboratoire numérique indépendant</div>
+          <h1>Comprendre la technologie.<span>Garder le contrôle.</span></h1>
+          <p class="hero-copy">
+            TAKOUBAKOY LAB est un espace d'exploration et de construction dédié à
+            <strong>l'indépendance numérique</strong> : comprendre les outils, tester les solutions
+            et développer une maîtrise réelle de son environnement technologique.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#vision">Explorer le laboratoire <span aria-hidden="true">&nbsp;↗</span></a>
+            <a class="button button-secondary" href="#manifeste">Notre approche</a>
+          </div>
+          <div class="status"><span class="status-dot" aria-hidden="true"></span> PHASE DE CONSTRUCTION — PREMIÈRE VERSION</div>
         </div>
 
-        <h3>
-            Production vidéo
-        </h3>
-
-        <p>
-            Création et diffusion de contenus audiovisuels.
-        </p>
-
-    </div>
-
-    <div class="card">
-
-        <div class="card-icon">
-            📚
+        <div class="hero-visual" aria-label="Illustration abstraite de circuits numériques">
+          <svg class="circuit" viewBox="0 0 560 430" role="img" aria-labelledby="circuit-title">
+            <title id="circuit-title">Réseau de circuits convergeant vers le monogramme TL</title>
+            <defs>
+              <linearGradient id="trace" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#48a7ff" stop-opacity=".18"/>
+                <stop offset=".55" stop-color="#48a7ff"/>
+                <stop offset="1" stop-color="#f04452"/>
+              </linearGradient>
+              <radialGradient id="core">
+                <stop offset="0" stop-color="#48a7ff" stop-opacity=".28"/>
+                <stop offset="1" stop-color="#48a7ff" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <circle cx="280" cy="210" r="174" fill="url(#core)"/>
+            <g fill="none" stroke="url(#trace)" stroke-width="1.5" opacity=".8">
+              <path d="M18 72H120L166 118H218L250 150"/>
+              <path d="M0 150H90L140 200H218"/>
+              <path d="M38 310H130L180 260H230"/>
+              <path d="M72 390V340L150 262"/>
+              <path d="M542 62H448L400 110H342L310 142"/>
+              <path d="M560 170H466L420 216H342"/>
+              <path d="M520 340H438L390 292H330"/>
+              <path d="M470 420V360L396 286"/>
+              <path d="M280 8V88L250 118"/>
+              <path d="M280 422V332L310 302"/>
+            </g>
+            <g fill="#48a7ff">
+              <circle cx="18" cy="72" r="3"/><circle cx="0" cy="150" r="3"/><circle cx="38" cy="310" r="3"/>
+              <circle cx="72" cy="390" r="3"/><circle cx="542" cy="62" r="3"/><circle cx="560" cy="170" r="3"/>
+              <circle cx="520" cy="340" r="3"/><circle cx="470" cy="420" r="3"/><circle cx="280" cy="8" r="3"/>
+              <circle cx="280" cy="422" r="3"/>
+            </g>
+            <rect x="190" y="122" width="180" height="176" rx="8" fill="#0b1422" stroke="#6dbbff" stroke-opacity=".7"/>
+            <rect x="199" y="131" width="162" height="158" rx="4" fill="none" stroke="#f04452" stroke-opacity=".42"/>
+            <path d="M225 164H285V182H245V206H282V224H245V256H225Z" fill="#f2f7ff"/>
+            <path d="M296 164H315V238H348V256H296Z" fill="#6dbbff"/>
+            <path d="M184 210H166M376 210H394M280 116V98M280 304V322" stroke="#f04452" stroke-width="2"/>
+            <circle cx="280" cy="210" r="116" fill="none" stroke="#48a7ff" stroke-opacity=".2" stroke-dasharray="3 8"/>
+          </svg>
+          <div class="visual-label">SYSTEMS / RESEARCH / BUILD</div>
         </div>
+      </div>
+    </section>
 
-        <h3>
-            Livres & créations
-        </h3>
-
-        <p>
-            Projets éditoriaux, livres numériques et
-            créations originales.
-        </p>
-
-    </div>
-
-    <div class="card">
-
-        <div class="card-icon">
-            🚀
+    <section class="section" id="vision">
+      <div class="shell">
+        <div class="section-heading">
+          <div class="eyebrow">La vision</div>
+          <h2>La technologie doit rester compréhensible et maîtrisable.</h2>
+          <p>Le laboratoire privilégie l'expérimentation, la transparence et les choix techniques que l'on peut expliquer — plutôt que la dépendance à des solutions opaques.</p>
         </div>
+        <div class="manifesto" id="manifeste">
+          <div>
+            <div class="manifesto-mark">NOTRE MANIFESTE</div>
+            <h2>Moins subir.<br>Plus comprendre.<br>Construire librement.</h2>
+          </div>
+          <div>
+            <p>Nous croyons qu'une véritable autonomie numérique commence par la connaissance : savoir ce qu'un outil fait, où vont les données et quelles alternatives existent.</p>
+            <p>TAKOUBAKOY LAB explore des méthodes et des technologies accessibles, documente les expérimentations et transforme les apprentissages en ressources utiles.</p>
+            <p>Notre ambition : avancer avec méthode, sans promesses excessives et sans abandonner le contrôle.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <h3>
-            TAKOUBAKOY
-        </h3>
+    <section class="section" id="axes">
+      <div class="shell">
+        <div class="section-heading">
+          <div class="eyebrow">Terrains d'exploration</div>
+          <h2>Trois axes pour avancer.</h2>
+          <p>Un cadre de travail évolutif. Les projets et ressources seront présentés au fur et à mesure de leur validation.</p>
+        </div>
+        <div class="principles">
+          <article class="principle">
+            <div class="number">01 / COMPRENDRE</div>
+            <h3>Connaissance & diagnostic</h3>
+            <p>Analyser les systèmes, comprendre les mécanismes et rendre les choix techniques plus lisibles.</p>
+          </article>
+          <article class="principle">
+            <div class="number">02 / MAÎTRISER</div>
+            <h3>Sécurité & autonomie</h3>
+            <p>Étudier la protection des appareils, la confidentialité et les solutions qui redonnent la main à leurs utilisateurs.</p>
+          </article>
+          <article class="principle">
+            <div class="number">03 / CONSTRUIRE</div>
+            <h3>Expérimentation & création</h3>
+            <p>Tester, développer et documenter des outils numériques avec une approche progressive et vérifiable.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
 
-        <p>
-            Une identité indépendante destinée à évoluer
-            avec de nouveaux projets.
-        </p>
-
+  <footer class="footer">
+    <div class="shell footer-inner">
+      <div><strong>TAKOUBAKOY LAB</strong> &nbsp;·&nbsp; DIGITAL INDEPENDENCE</div>
+      <div>Un laboratoire indépendant en construction. <span aria-hidden="true">©</span> 2026</div>
     </div>
-
-</div>
-```
-
-</section>
-
-<!-- =========================
-     À PROPOS
-========================= -->
-
-<div class="about" id="apropos">
-
-```
-<div class="about-inner">
-
-    <h2 class="section-title">
-        À <span>propos</span>
-    </h2>
-
-    <p>
-        TAKOUBAKOY est un univers créatif indépendant
-        consacré à la musique, à la vidéo, à la culture
-        et aux projets numériques.
-    </p>
-
-    <br>
-
-    <p>
-        Ce site constitue la présence officielle de
-        TAKOUBAKOY sur Internet. Il évoluera progressivement
-        avec les nouvelles créations et les nouveaux projets.
-    </p>
-
-</div>
-```
-
-</div>
-
-<!-- =========================
-     CONTACT
-========================= -->
-
-<section id="contact">
-
-```
-<div class="contact-box">
-
-    <h2>
-        Bienvenue chez TAKOUBAKOY
-    </h2>
-
-    <p>
-        Le site officiel évolue progressivement.
-        De nouveaux contenus arrivent prochainement.
-    </p>
-
-    <div class="buttons">
-
-        <a class="btn btn-primary" href="#musique">
-            Explorer TAKOUBAKOY
-        </a>
-
-    </div>
-
-</div>
-```
-
-</section>
-
-</main>
-
-<footer>
-
-```
-© 2026 <strong>TAKOUBAKOY</strong> — Tous droits réservés.
-```
-
-</footer>
-
+  </footer>
 </body>
 </html>
